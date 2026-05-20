@@ -1,0 +1,17 @@
+docker build -t my-chord-node .
+
+docker tag my-chord-node <your-dockerhub-username>/chord-node:latest
+docker push <your-dockerhub-username>/chord-node:latest
+
+kubectl apply -f yamlfiles/configmap.yaml
+
+
+sudo microk8s kubectl apply -f yamlfiles/node_deploy.yaml
+
+kubectl apply -f yamlfiles/service.yaml
+
+kubectl get services
+
+
+curl -X POST http://<NODE_IP>:<NODE_PORT>/lookup -d '{"key": 30}' -H "Content-Type: application/json"
+
