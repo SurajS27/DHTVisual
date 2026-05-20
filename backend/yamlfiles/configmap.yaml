@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: config
+data:
+  node-id: |
+    [1, 4, 9, 11, 14, 18, 20, 21, 28]  # node IDs
+  pred-id: |
+    [28, 1, 4, 9, 11, 14, 18, 20, 21]  # predecessors
+  finger-table: |
+    [
+      [4, 4, 9, 9, 18],    # FT for Node 12
+      [9, 9, 9, 14, 20],    # FT for Node 18
+      [11, 11, 14, 18, 28],    # FT for Node 21
+      [14, 14, 18, 20, 28],    # FT for Node 28  done
+      [18, 18, 18, 28, 1],   # FT for Node 3
+      [14, 18, 21, 25, 28],  # FT for Node 8
+      [18, 21, 25, 28, 30],  # FT for Node 14
+      [30, 3, 8, 12, 14],    # FT for Node 25
+      [3, 8, 12, 14, 18]     # FT for Node 30
+    ]

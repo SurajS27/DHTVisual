@@ -1,0 +1,250 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-1
+  template:
+    metadata:
+      labels:
+        app: chord-node-1
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "1"
+        - name: PRED_ID
+          value: "28"  # Example predecessor ID
+        - name: FINGER_TABLE
+          value: "4,4,9,9,18"  # Example finger table
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-4
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-4
+  template:
+    metadata:
+      labels:
+        app: chord-node-4
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "4"
+        - name: PRED_ID
+          value: "1"
+        - name: FINGER_TABLE
+          value: "9,9,9,14,20"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-9
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-9
+  template:
+    metadata:
+      labels:
+        app: chord-node-9
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "9"
+        - name: PRED_ID
+          value: "4"
+        - name: FINGER_TABLE
+          value: "11,11,14,18,28"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-11
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-11
+  template:
+    metadata:
+      labels:
+        app: chord-node-11
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "11"
+        - name: PRED_ID
+          value: "9"
+        - name: FINGER_TABLE
+          value: "14,14,18,20,28"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-14
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-14
+  template:
+    metadata:
+      labels:
+        app: chord-node-14
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "14"
+        - name: PRED_ID
+          value: "11"
+        - name: FINGER_TABLE
+          value: "18,18,18,28,33"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-18
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-18
+  template:
+    metadata:
+      labels:
+        app: chord-node-18
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "18"
+        - name: PRED_ID
+          value: "14"
+        - name: FINGER_TABLE
+          value: "20,20,28,28,36"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-20
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-20
+  template:
+    metadata:
+      labels:
+        app: chord-node-20
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "20"
+        - name: PRED_ID
+          value: "18"
+        - name: FINGER_TABLE
+          value: "21,28,28,28,36"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-21
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-21
+  template:
+    metadata:
+      labels:
+        app: chord-node-21
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "21"
+        - name: PRED_ID
+          value: "20"
+        - name: FINGER_TABLE
+          value: "28,28,28,33,41"
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node-28
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chord-node-28
+  template:
+    metadata:
+      labels:
+        app: chord-node-28
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:v2
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID
+          value: "28"
+        - name: PRED_ID
+          value: "21"
+        - name: FINGER_TABLE
+          value: "33,33,33,36,46"

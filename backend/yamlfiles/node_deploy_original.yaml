@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chord-node
+spec:
+  replicas:9  # Number of chord nodes (1 per POD)
+  selector:
+    matchLabels:
+      app: chord-node
+  template:
+    metadata:
+      labels:
+        app: chord-node
+    spec:
+      containers:
+      - name: chord-node
+        image: surajs27/chord-node:latest
+        ports:
+        - containerPort: 5000
+        env:
+        - name: NODE_ID_1
+          valueFrom:
+            configMapKeyRef:
+              name: config
+              key: node-id
+        - name: PRED_ID
+          valueFrom:
+            configMapKeyRef:
+              name: config
+              key: pred-id
+        - name: FINGER_TABLE
+          valueFrom:
+            configMapKeyRef:
+              name: config
+              key: finger-table
